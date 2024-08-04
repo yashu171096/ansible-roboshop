@@ -20,7 +20,7 @@
       path: /usr/share/nginx/html
       state: directory
   - name: download the url
-    ansibile.builtin.url:
+    ansible.builtin.url:
     url: https://roboshop-builds.s3.amazonaws.com/web.zip
     dest: /tmp
   - name: unarchive the file
