@@ -9,7 +9,7 @@
   - name: start and enable nginx
     ansible.builtin.service:
       name: nginx
-      state: start
+      state: started
       enabled: yes
   - name: Remove file (delete file) html
     ansible.builtin.file:
