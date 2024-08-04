@@ -41,3 +41,9 @@
       src: /tmp/catalogue.zip
       dest: /app 
       remote_src: yes       
+  - name: dependencies installed
+    ansible.builtin.yum:
+      name: npm
+      state: installed
+    args:
+      chdir: /app  
