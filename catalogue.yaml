@@ -38,5 +38,6 @@
       chdir: /tmp
   - name: Extract catalogue.zip
     ansible.builtin.unarchive:
-      src: /tmp/
-      dest: /app        
+      src: /tmp
+      dest: /app 
+      remote_src: yes       
