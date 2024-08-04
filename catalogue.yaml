@@ -35,7 +35,7 @@
   - name: running the script
     ansible.builtin.shell: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
     args:
-      chdir: /tmp
+      chdir: tmp/
   - name: Extract catalogue.zip
     ansible.builtin.unarchive:
       src: /tmp
