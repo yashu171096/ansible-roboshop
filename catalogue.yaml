@@ -42,8 +42,6 @@
       dest: /app 
       remote_src: yes       
   - name: dependencies installed
-    ansible.builtin.yum:
-      name: npm
-      state: installed
+    ansible.builtin.command: npm install
     args:
       chdir: /app  
