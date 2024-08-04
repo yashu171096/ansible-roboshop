@@ -23,7 +23,7 @@
   - name: Get stats of a file
     ansible.builtin.stat:
       path: /app
-      register: folder
+      register: "folder"
   - name: get output of the folder
     ansible.builtin.debug:
       msg: "output is {{folder}}"
