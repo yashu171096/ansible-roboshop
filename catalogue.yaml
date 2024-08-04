@@ -64,4 +64,10 @@
   - name: install mongodb-org-shell
     ansible.builtin.yum:
       name: mongodb-org-shell
-      state: installed        
+      state: installed
+  - name: sending the data to mongodb
+    ansible.builtin.command: mongo --host mongodb.devops76.tech < /app/schema/catalogue.js 
+  - name: restart catalogue
+    ansible.builtin.service:
+      name: catalogue
+      state: restarted             
