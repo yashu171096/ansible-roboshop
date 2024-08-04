@@ -33,11 +33,11 @@
       state: directory
     when: folder.stat.exists == False
   - name: running the script
-    ansible.builtin.get_url: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-    args:
-      chdir: /tmp
+    ansible.builtin.get_url:
+      url: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      dest: /tmp
   - name: Extract catalogue.zip
     ansible.builtin.unarchive:
-      src: /tmp
+      src: /tmp/catalogue.zip
       dest: /app 
       remote_src: yes       
