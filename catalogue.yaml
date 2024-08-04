@@ -19,4 +19,12 @@
     become: yes
     ansible.builtin.user:
       name: roboshop
-    when: out.rc != 0         
+    when: out.rc != 0 
+  - name: Get stats of a file
+    ansible.builtin.stat:
+    path: /app
+    register: folder
+  - name: get output of the folder
+    ansible.builtin.debug:
+      msg: "output is {{folder}}"
+              
