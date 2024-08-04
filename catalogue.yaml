@@ -23,7 +23,7 @@
   - name: Get stats of a file
     ansible.builtin.stat:
       path: /app
-    register: "folder"
+    register: folder
   - name: get output of the folder
     ansible.builtin.debug:
       msg: "output is {{folder}}"
@@ -31,4 +31,4 @@
     ansible.builtin.file:
       path: /app
       state: directory
-    when: directory.stats.exits == False     
+    when: folder.stats.exists == False     
