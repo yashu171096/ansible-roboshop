@@ -1,0 +1,22 @@
+- name: installing catalogue server
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: running the script
+    ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  - name: installing nodejs
+    ansible.builtin.yum:
+      name: nodejs
+      state: installed
+  - name: checking username exits or not
+    ansible.builtin.command: id roboshop
+    register: "out"
+    ignore_errors: true
+  - name: printing the exit status
+    ansible.builtin.debug:
+      msg: "exit status is {{out.rc}}"
+  - name: creating user
+    become: yes
+    ansible.builtin.user:
+      name: roboshop
+    when: out.rc != 0         
