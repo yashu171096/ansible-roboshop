@@ -51,4 +51,17 @@
       dest: /etc/systemd/system/catalogue.service
   - name: daemon reload
     ansible.builtin.systemd_service:
-      daemon_reload: true         
+      daemon_reload: true 
+  - name: service start and enable
+    ansible.builtin.service:
+      name: catalogue
+      state: started
+      enabled: yes
+  - name: copy mongo.repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+  - name: install mongodb-org-shell
+    ansible.builtin.yum:
+      name: mongodb-org-shell
+      state: installed        
